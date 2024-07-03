@@ -17,11 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,4 +38,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function username()
+    {
+        return 'username';
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($model) {
+            $model->userID = 'A'.date('Ymd').str_pad(User::max('id') + 1, 3, 0, STR_PAD_LEFT);
+        });
+    }
 }

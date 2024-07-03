@@ -1,0 +1,13 @@
+.bg3 .card-body p {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+}
+.bg3 .card-body a {
+    color: inherit;
+    text-decoration: auto;
+}
+.o9p {
+    text-align: center;
+    justify-content: center;
+}

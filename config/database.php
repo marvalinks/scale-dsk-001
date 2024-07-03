@@ -78,6 +78,13 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'nativephp' => [
+            'driver' => 'sqlite',
+            'url' => env('DATABASE_URL'),
+            'database' => env('NATIVEPHP_DATABASE_PATH', ''),
+            'prefix' => '',
+            'prefix_indexes' => true
+        ],
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
