@@ -45,7 +45,7 @@
                 @auth
                 <ul class="nav">
                   <li class="nav-item">
-                    <a href="javascript:void(0)" class="nav-link">
+                    <a href="{{route('portal.dashboard')}}" class="nav-link">
                       <i class="typcn typcn-chart-area-outline"></i> Dashboard
                     </a>
                   </li>

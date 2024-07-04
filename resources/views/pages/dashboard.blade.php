@@ -33,7 +33,7 @@
                             <a href="{{route('portal.scale.reading')}}"><p class="mg-b-0">Scale Readings</p></a>
                         </div>
                         <div class="card-footer bd-t">
-                            January, 20, 2017 4:30am
+                            -
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                             <a href="{{route('portal.capture.data')}}"><p class="mg-b-0">Capture new data</p></a>
                         </div>
                         <div class="card-footer bd-t">
-                            January, 20, 2017 4:30am
+                            -
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,27 @@
                             <a href="{{route('portal.readings')}}"><p class="mg-b-0">Reporting Tool</p></a>
                         </div>
                         <div class="card-footer bd-t">
-                            January, 20, 2017 4:30am
+                            -
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg3">
+                        <div class="card-body">
+                            <a href="{{route('portal.readings')}}"><p class="mg-b-0">Configurations</p></a>
+                        </div>
+                        <div class="card-footer bd-t">
+                            -
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg3">
+                        <div class="card-body">
+                            <a href="{{route('portal.users.index')}}"><p class="mg-b-0">User Setups</p></a>
+                        </div>
+                        <div class="card-footer bd-t">
+                            -
                         </div>
                     </div>
                 </div>
