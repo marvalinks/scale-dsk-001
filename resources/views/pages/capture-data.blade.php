@@ -59,7 +59,7 @@
                 <h2>Weighing Ticket:</h2>
             </div>
             <div class="row">
-                <form id="kepapp" action="#" method="post">
+                <form id="kepapp" action="{{route('portal.capture.data')}}" method="post">
                     @csrf
                     <div class="row">
                         <!-- Name Field -->

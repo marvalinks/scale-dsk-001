@@ -50,7 +50,7 @@
                 <div class="col-md-4">
                     <div class="card bg3">
                         <div class="card-body">
-                            <a href=""><p class="mg-b-0">Reporting Tool</p></a>
+                            <a href="{{route('portal.readings')}}"><p class="mg-b-0">Reporting Tool</p></a>
                         </div>
                         <div class="card-footer bd-t">
                             January, 20, 2017 4:30am

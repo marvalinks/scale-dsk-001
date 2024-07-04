@@ -3,7 +3,7 @@
 @section('scripts')
 <script>
     setInterval(function() {
-        Livewire.dispatch('weightTab')
+        Livewire.emit('weightTab')
     }, 1000);
 </script>
 @endsection
@@ -49,7 +49,7 @@
         <div class="az-content-body">
             <div class="row center-screen">
                 <div class="lg67">
-                    <img src="/assets/images/logo.png" alt="" height="24" />
+                    <img src="/images/logo.png" alt="" height="24" />
                 </div>
                 <h4>ALPHA SCALE</h4>
                @livewire('g-scale')

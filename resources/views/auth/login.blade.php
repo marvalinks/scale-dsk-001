@@ -24,7 +24,7 @@
         <div class="az-signin-wrapper">
             <div class="az-card-signin">
                 <h1 class="az-logo">
-                    <img src="https://neip.gov.gh/images/a-100.jpg" alt="">
+                    <img src="/images/logo.png" style="width: 199px;">
                 </h1>
                 <div class="az-signin-header">
                     <h2>Welcome back!</h2>

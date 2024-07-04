@@ -31,14 +31,14 @@
             <div class="container">
               <div class="az-header-left">
                 <a href="{{route('portal.dashboard')}}" class="az-logo">
-                    <img src="https://neip.gov.gh/images/a-100.jpg" alt="">
+                    <img src="/images/logo.png" class="logo">
                 </a>
                 <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
               </div>
               <div class="az-header-menu">
                 <div class="az-header-menu-header">
                     <a href="{{route('portal.dashboard')}}" class="az-logo">
-                        <img src="https://neip.gov.gh/images/a-100.jpg" alt="">
+                        <img src="/images/logo.png" class="logo">
                     </a>
                   <a href="" class="close">×</a>
                 </div>
