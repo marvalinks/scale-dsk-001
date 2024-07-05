@@ -9,17 +9,22 @@ class PythonService
 {
     public function readings()
     {
-        $comport = 'COM3';
-        $endpoint = app_path('PythonScripts');
+        // $comport = 'COM3';
+        // $endpoint = app_path('PythonScripts');
         
-        $path = $endpoint."/readings.py";
-        $process = new Process(['python3', $path, $comport]);
-        $process->run();
+        // $path = $endpoint."/readings.py";
+        // $process = new Process(['python', $path, $comport]);
+        // $process->run();
 
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
+        // if (!$process->isSuccessful()) {
+        //     throw new ProcessFailedException($process);
+        // }
 
-        return trim($process->getOutput());
+        // return trim($process->getOutput());
+
+        $path = app_path('PythonScripts');
+        $result = shell_exec("python " . $path . "/weight.py" . " 2>&1");
+
+        return trim($result);
     }
 }

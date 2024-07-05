@@ -36,7 +36,7 @@ class GScale extends Component
         // $this->weight = $weight;
 
         // $path = app_path('PythonScripts');
-        // $result = shell_exec("python3 " . $path . "/weight.py" . " 2>&1");
+        // $result = shell_exec("python " . $path . "/weight.py" . " 2>&1");
         
         $result = $this->pythonService->readings();
         if (trim($result) == trim("error")) {
