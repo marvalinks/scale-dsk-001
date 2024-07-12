@@ -60,7 +60,7 @@
                 <div class="col-md-4">
                     <div class="card bg3">
                         <div class="card-body">
-                            <a href="{{route('portal.readings')}}"><p class="mg-b-0">Configurations</p></a>
+                            <a href="{{route('portal.configurations')}}"><p class="mg-b-0">Configurations</p></a>
                         </div>
                         <div class="card-footer bd-t">
                             -

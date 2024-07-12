@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserModuleController extends Controller
 {
@@ -25,6 +26,20 @@ class UserModuleController extends Controller
             return redirect()->route('portal.dashboard');
         }
         $request->session()->flash('alert-danger', 'Error logging in');
+        return redirect()->route('login');
+    }
+    public function register(Request $request)
+    {
+        return view('auth.register');
+    }
+    public function postRegister(Request $request)
+    {
+        $data = $request->validate([
+            'username' => 'required', 'password' => 'required', 'name' => 'required'
+        ]);
+        
+        $data['password'] = Hash::make($data['password']);
+        User::create($data);
         return redirect()->route('login');
     }
 

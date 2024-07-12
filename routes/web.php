@@ -23,6 +23,8 @@ Route::get('/', function () {
 
 Route::get('login', [UserModuleController::class, 'login'])->name('login');
 Route::post('login', [UserModuleController::class, 'postLogin'])->name('login');
+Route::get('register', [UserModuleController::class, 'register'])->name('register');
+Route::post('register', [UserModuleController::class, 'postRegister'])->name('register');
 Route::get('logout', [UserModuleController::class, 'logout'])->name('logout');
 
 Route::group(['as' => 'portal.', 'middleware' => ['auth']], function () {
@@ -32,6 +34,8 @@ Route::group(['as' => 'portal.', 'middleware' => ['auth']], function () {
     Route::get('readings', [AdminModuleController::class, 'readings'])->name('readings');
     Route::get('capture-data', [AdminModuleController::class, 'captureData'])->name('capture.data');
     Route::post('capture-data', [AdminModuleController::class, 'captureDataSave'])->name('capture.data');
+    Route::get('configurations', [AdminModuleController::class, 'configurations'])->name('configurations');
+    Route::post('configurations', [AdminModuleController::class, 'postConfigurations'])->name('configurations');
 
     Route::group(['prefix' => 'users', 'as' => 'users.', 'middleware' => []], function () {
         Route::get('', [UserModuleController::class, 'index'])->name('index');

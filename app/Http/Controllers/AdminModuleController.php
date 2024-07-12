@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Configuration;
 use App\Models\WeightReading;
 use Illuminate\Http\Request;
 
@@ -35,5 +36,23 @@ class AdminModuleController extends Controller
         $data['accountName'] = auth()->user()->name;
         WeightReading::create($data);
         return redirect()->route('portal.readings');
+    }
+    public function postConfigurations(Request $request)
+    {
+        $data = $request->validate([
+            'port' => 'required', 'script' => 'required'
+        ]);
+        $config = Configuration::first();
+        if($config) {
+            $config->update($data);
+        }else{
+            Configuration::create($data);
+        }
+        return redirect()->route('portal.configurations');
+    }
+    public function configurations(Request $request)
+    {
+        $config = Configuration::first();
+        return view('pages.configuration', compact('config'));
     }
 }

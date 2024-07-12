@@ -27,11 +27,12 @@
                     <img src="/images/logo.png" style="width: 199px;">
                 </h1>
                 <div class="az-signin-header">
-                    <h2>Welcome back!</h2>
-                    <h4>Please sign in to continue</h4>
-
-                    <form action="{{route('login')}}" method="POST">
+                    <form action="{{route('register')}}" method="POST">
                         @csrf
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name" placeholder="Enter your name" />
+                        </div>
                         <div class="form-group">
                             <label>Username</label>
                             <input type="text" class="form-control" name="username" placeholder="Enter your username" />
@@ -42,12 +43,12 @@
                             <input type="password" class="form-control" name="password" placeholder="Enter your password" />
                         </div>
                         <!-- form-group -->
-                        <button type="submit" class="btn btn-az-primary btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-az-primary btn-block">Register</button>
                     </form>
                 </div>
                 <!-- az-signin-header -->
                 <div class="az-signin-footer">
-                    <p><a href="{{route('register')}}">...</a></p>
+                    <p><a href="{{route('login')}}">...</a></p>
                 </div>
                 <!-- az-signin-footer -->
             </div>
