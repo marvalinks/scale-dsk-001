@@ -35,6 +35,9 @@ class AdminModuleController extends Controller
             'weight' => 'required', 'sourceName' => 'required', 'driverName' => 'required',
             'commodityName' => 'required', 'destinationName' => 'required'
         ]);
+        if(floatval($data['weight']) == floatval(0)){
+            return back();
+        }
         $data['accountName'] = auth()->user()->name;
         $data['readingId'] = $reading->readingId;
         WeightReadingSecond::create($data);
@@ -51,6 +54,9 @@ class AdminModuleController extends Controller
             'weight' => 'required', 'sourceName' => 'required', 'driverName' => 'required',
             'commodityName' => 'required', 'destinationName' => 'required'
         ]);
+        if(floatval($data['weight']) == floatval(0)){
+            return back();
+        }
         $data['accountName'] = auth()->user()->name;
         WeightReading::create($data);
         return redirect()->route('portal.readings');

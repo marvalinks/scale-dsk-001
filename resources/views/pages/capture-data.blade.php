@@ -12,7 +12,7 @@
     setInterval(function() {
         Livewire.emit('readWeight')
         Livewire.emit('weightTab')
-    }, 1000);
+    }, 800);
 </script>
 @endsection
 
