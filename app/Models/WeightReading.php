@@ -18,4 +18,8 @@ class WeightReading extends Model
             $model->readingId = 'T'.date('Ymd').str_pad(WeightReading::max('id') + 1, 3, 0, STR_PAD_LEFT);
         });
     }
+    public function second()
+    {
+        return $this->hasOne(WeightReadingSecond::class, 'readingId', 'readingId');
+    }
 }

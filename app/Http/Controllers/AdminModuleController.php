@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Configuration;
 use App\Models\WeightReading;
+use App\Models\WeightReadingSecond;
 use Illuminate\Http\Request;
 
 class AdminModuleController extends Controller
@@ -21,6 +22,23 @@ class AdminModuleController extends Controller
     public function captureData(Request $request)
     {
         return view('pages.capture-data');
+    }
+    public function secondReadings(Request $request, $id)
+    {
+        $reading = WeightReading::where('readingId', $id)->first();
+        return view('pages.second-data', compact('reading'));
+    }
+    public function secondReadingsPost(Request $request, $id)
+    {
+        $reading = WeightReading::where('readingId', $id)->first();
+        $data = $request->validate([
+            'weight' => 'required', 'sourceName' => 'required', 'driverName' => 'required',
+            'commodityName' => 'required', 'destinationName' => 'required'
+        ]);
+        $data['accountName'] = auth()->user()->name;
+        $data['readingId'] = $reading->readingId;
+        WeightReadingSecond::create($data);
+        return redirect()->route('portal.readings');
     }
     public function readings(Request $request)
     {

@@ -74,6 +74,7 @@
                                 <th class="sorting" tabindex="0" aria-controls="all-applications-table" rowspan="1" colspan="1" style="width: 144px;" aria-label="Phone: activate to sort column ascending">DVR. Name</th>
                                 <th class="sorting" tabindex="0" aria-controls="all-applications-table" rowspan="1" colspan="1" style="width: 135px;" aria-label="Email: activate to sort column ascending">CMM. Name</th>
                                 <th class="sorting" tabindex="0" aria-controls="all-applications-table" rowspan="1" colspan="1" style="width: 135px;" aria-label="Email: activate to sort column ascending">DES. Name</th>
+                                <th class="sorting" tabindex="0" aria-controls="all-applications-table" rowspan="1" colspan="1" style="width: 135px;" aria-label="Email: activate to sort column ascending">Weight (KG)</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -82,7 +83,11 @@
                             <tr class="odd">
                                 <td>
                                     {{-- <a href="#" data-toggle="modal" data-target="#add-application-modal">{{$data->projectId}}</a> --}}
-                                    <a href="" class="identifyingClass" >{{$data->readingId}}</a>
+                                    @if ($data->second)
+                                    {{$data->readingId}}
+                                    @else
+                                    <a href="{{route('portal.second.readings', [$data->readingId])}}" class="identifyingClass" >{{$data->readingId}}</a>
+                                    @endif
                                 </td>
                                 <td>{{\Carbon\Carbon::parse($data->created_at)->toFormattedDateString()}}</td>
                                 <td>{{$data->accountName}}</td>
@@ -90,10 +95,23 @@
                                 <td>{{$data->driverName}}</td>
                                 <td>{{$data->commodityName}}</td>
                                 <td>{{$data->destinationName}}</td>
+                                <td><strong>{{number_format($data->weight, 2)}}</strong></td>
                                 <td>
-                                    <a href="#">delete data</a>
+                                    <a href="#" style="color: red;">del</a>
                                 </td>
                             </tr>
+                            @if ($data->second)
+                            <tr class="odd">
+                                <td>{{$data->second->readingId}}</td>
+                                <td>{{\Carbon\Carbon::parse($data->second->created_at)->toFormattedDateString()}}</td>
+                                <td>{{$data->second->accountName}}</td>
+                                <td>{{$data->second->sourceName}}</td>
+                                <td>{{$data->second->driverName}}</td>
+                                <td>{{$data->second->commodityName}}</td>
+                                <td>{{$data->second->destinationName}}</td>
+                                <td><strong>{{number_format($data->second->weight, 2)}}</strong></td>
+                            </tr>
+                            @endif
                             @empty
                             <tr class="odd">
                                 <td valign="top" colspan="6" class="dataTables_empty">No data available in table</td>

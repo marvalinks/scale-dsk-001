@@ -32,6 +32,8 @@ Route::group(['as' => 'portal.', 'middleware' => ['auth']], function () {
     Route::get('', [AdminModuleController::class, 'dashboard'])->name('dashboard');
     Route::get('sclae-readings', [AdminModuleController::class, 'scaleReading'])->name('scale.reading');
     Route::get('readings', [AdminModuleController::class, 'readings'])->name('readings');
+    Route::get('second-readings/{id}', [AdminModuleController::class, 'secondReadings'])->name('second.readings');
+    Route::post('second-readings/{id}', [AdminModuleController::class, 'secondReadingsPost'])->name('second.readings');
     Route::get('capture-data', [AdminModuleController::class, 'captureData'])->name('capture.data');
     Route::post('capture-data', [AdminModuleController::class, 'captureDataSave'])->name('capture.data');
     Route::get('configurations', [AdminModuleController::class, 'configurations'])->name('configurations');
