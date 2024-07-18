@@ -5,7 +5,7 @@ def readings(comport):
     
     # try:
     #     serialBout = serial.Serial()
-    #     serialBout.port = "COM13"
+    #     serialBout.port = comport
     #     serialBout.baudrate = 9600
     #     serialBout.open()
 
@@ -21,6 +21,6 @@ if __name__ == "__main__":
     import serial.tools.list_ports
     import sys
     import random
-    args = sys.argv[1:]
+    args = sys.argv[1]
     port = args
     print(readings(port))

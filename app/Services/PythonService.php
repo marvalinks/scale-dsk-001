@@ -24,15 +24,22 @@ class PythonService
         $endpoint = app_path('PythonScripts');
         
         $path = $endpoint."/readings.py";
-        $process = new Process([$script, $path, $comport]);
-        // $process = new Process(['python', $path, $comport]);
-        $process->run();
+        // $process = new Process([$script, $path, $comport]);
+        // // $process = new Process(['python', $path, $comport]);
+        // $process->run();
 
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
+        // if (!$process->isSuccessful()) {
+        //     throw new ProcessFailedException($process);
+        // }
 
-        return trim($process->getOutput());
+        // return trim($process->getOutput());
+
+        
+        
+
+        $command = "$script $path $comport";
+        $output = shell_exec($command);
+        return trim($output);
 
         
         
