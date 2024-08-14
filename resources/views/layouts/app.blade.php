@@ -52,9 +52,15 @@
         
                     
                     <li class="nav-item ">
-                    <a href="#" class="nav-link">
-                        <i class="typcn typcn-cog"></i> Settings
-                    </a>
+                      <a href="{{route('portal.users.index')}}" class="nav-link">
+                          <i class="typcn typcn-cog"></i> User Settings
+                      </a>
+                    </li>
+
+                    <li class="nav-item ">
+                      <a href="#" class="nav-link">
+                          <i class="typcn typcn-cog"></i> Reports/Exports
+                      </a>
                     </li>
                     
                 </ul>
