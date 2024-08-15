@@ -99,7 +99,7 @@
                                 @endif
                                 @if (auth()->user()->roleID == 1)
                                 <td>
-                                    <a href="#" style="color: red;">del</a>
+                                    <a onclick="return confirm('Are you sure ?')" href="{{route('portal.delete.readings', [$data->readingId])}}" style="color: red;">del</a>
                                 </td>
                                 @endif
                             </tr>

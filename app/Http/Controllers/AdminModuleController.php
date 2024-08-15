@@ -23,6 +23,17 @@ class AdminModuleController extends Controller
     {
         return view('pages.capture-data');
     }
+    public function deleteReadings(Request $request, $id)
+    {
+        $reading = WeightReading::where('readingId', $id)->first();
+        $reading->delete();
+        $second = WeightReadingSecond::where('readingId', $id)->first();
+        if($second)
+        {
+            $second->delete();
+        }
+        return back();
+    }
     public function secondReadings(Request $request, $id)
     {
         $reading = WeightReading::where('readingId', $id)->first();
