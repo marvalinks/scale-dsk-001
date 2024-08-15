@@ -48,7 +48,9 @@
                 </div>
                 <!-- az-signin-header -->
                 <div class="az-signin-footer">
+                    @if ($users < 1)
                     <p><a href="{{route('login')}}">...</a></p>
+                    @endif
                 </div>
                 <!-- az-signin-footer -->
             </div>

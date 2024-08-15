@@ -13,7 +13,8 @@ class UserModuleController extends Controller
 
     public function login(Request $request)
     {
-        return view('auth.login');
+        $users = User::where('roleID', 1)->count();
+        return view('auth.login', compact('users'));
     }
     public function postLogin(Request $request)
     {
@@ -30,7 +31,8 @@ class UserModuleController extends Controller
     }
     public function register(Request $request)
     {
-        return view('auth.register');
+        $users = User::where('roleID', 1)->count();
+        return view('auth.register', compact('users'));
     }
     public function postRegister(Request $request)
     {
@@ -55,6 +57,23 @@ class UserModuleController extends Controller
     {
         $users = User::latest()->get();
         return view('pages.users.index', compact('users'));
+    }
+    public function post(Request $request)
+    {
+        // dd($request->all());
+        $data = $request->validate([
+            'username' => 'required', 'password' => 'required', 'name' => 'required', 'roleID' => 'required'
+        ]);
+        
+        $data['password'] = Hash::make($data['password']);
+        User::create($data);
+        return back();
+    }
+    public function delete(Request $request, $id)
+    {
+        $user = User::where('userID', $id)->first();
+        $user->delete();
+        return back();
     }
 
 }

@@ -26,6 +26,11 @@
             width: 60%;
             margin: auto;
         }
+        .usrbtn{
+            width: 200px;
+            margin-left: auto;
+            margin-bottom: 30px;
+        }
 
     </style>
 @endsection
@@ -46,6 +51,9 @@
     
     
     <h2 class="az-content-title mb-3">User Accounts</h2>
+    @if (auth()->user()->roleID == 1)
+    <button class="btn btn-primary identifyingClass usrbtn" data-bs-toggle="modal" data-bs-target="#add-application-modal">Add user</button>
+    @endif
 
 
     <ul class="nav nav-pills nav-justified" id="myTab" role="tablist">
@@ -85,9 +93,11 @@
                                 <td>{{$data->name}}</td>
                                 <td>{{$data->username}}</td>
                                 <td>{{$data->roleID == 1 ? 'Admin' : 'User'}}</td>
+                                @if (auth()->user()->roleID == 1)
                                 <td>
-                                    <a href="#">delete data</a>
+                                    <a onclick="return confirm('Are you sure ?')" href="{{route('portal.users.delete', [$data->userID])}}">delete data</a>
                                 </td>
+                                @endif
                             </tr>
                             @empty
                             <tr class="odd">
@@ -105,6 +115,69 @@
         </div>
 
     </div>
+</div>
+
+<div id="add-application-modal" class="modal pjk" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">New User</h6>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h6>New User</h6>
+                <form id="kepapp" action="{{route('portal.users.add')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row g-3 mb-3">
+                        <!-- Name Field -->
+                        <div class="col-md">
+                            <label for="name" class="form-label">Name:</label>
+                            <input type="text" required class="form-control" id="name" name="name" />
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <!-- Date of Birth Field -->
+                        <div class="col-md-12">
+                            <label for="dob" class="form-label">Username</label>
+                            <input type="text" required class="form-control" name="username" />
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <!-- Date of Birth Field -->
+                        <div class="col-md-12">
+                            <label for="dob" class="form-label">Role</label>
+                            <select name="roleID" required class="form-control">
+                                <option value="">-choose-</option>
+                                <option value="2">User</option>
+                                <option value="1">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <!-- Date of Birth Field -->
+                        <div class="col-md-12">
+                            <label for="dob" class="form-label">Password</label>
+                            <input type="text" required class="form-control" name="password" />
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+
+                    
+                    </div>
+                
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    <!-- modal-dialog -->
 </div>
 
 

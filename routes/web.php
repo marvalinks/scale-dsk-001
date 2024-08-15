@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminModuleController;
 use App\Http\Controllers\PythonModuleController;
+use App\Http\Controllers\ReportModuleController;
 use App\Http\Controllers\UserModuleController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,14 @@ Route::group(['as' => 'portal.', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'users', 'as' => 'users.', 'middleware' => []], function () {
         Route::get('', [UserModuleController::class, 'index'])->name('index');
+        Route::post('add', [UserModuleController::class, 'post'])->name('add');
+        Route::get('delete/{id}', [UserModuleController::class, 'delete'])->name('delete');
+    });
+
+    Route::group(['prefix' => 'reports', 'as' => 'reports.', 'middleware' => []], function () {
+        Route::get('', [ReportModuleController::class, 'index'])->name('index');
+        Route::get('readings-report', [ReportModuleController::class, 'readingReport'])->name('readings.report');
+        Route::get('print-ink/{id}', [ReportModuleController::class, 'printInk'])->name('print.ink');
     });
     
     

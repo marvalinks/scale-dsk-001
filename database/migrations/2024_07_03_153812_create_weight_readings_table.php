@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('driverName')->nullable();
             $table->string('commodityName')->nullable();
             $table->string('destinationName')->nullable();
+            $table->string('userName')->nullable();
+            $table->string('vehicleID')->nullable();
             $table->timestamps();
         });
     }

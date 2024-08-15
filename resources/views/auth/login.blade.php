@@ -19,6 +19,16 @@
 
         <!-- azia CSS -->
         <link rel="stylesheet" href="/css/azia.css" />
+        <style>
+            .az-signin-wrapper{
+                background: url('/images/bg01.jpg') no-repeat center;
+                background-size: cover;
+                background-position: bottom;
+            }
+            .az-card-signin{
+                background-color: white!important;
+            }
+        </style>
     </head>
     <body class="az-body">
         <div class="az-signin-wrapper">
@@ -47,7 +57,9 @@
                 </div>
                 <!-- az-signin-header -->
                 <div class="az-signin-footer">
+                    @if ($users < 1)
                     <p><a href="{{route('register')}}">...</a></p>
+                    @endif
                 </div>
                 <!-- az-signin-footer -->
             </div>

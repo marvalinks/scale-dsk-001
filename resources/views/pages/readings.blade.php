@@ -62,9 +62,9 @@
             <h5 class="mg-10 ml-0">&nbsp;</h5>
 
             <div class="table-responsive">
-                <div id="all-applications-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div id="all-applications-table_wrapper" class="">
                     
-                    <table class="table table-hover mg-b-0 dataTable no-footer" id="all-applications-table" style="width: 100%;" aria-describedby="all-applications-table_info">
+                    <table class="table table-hover mg-b-0 no-footer" id="all-applications-table" style="width: 100%;" aria-describedby="all-applications-table_info">
                         <thead>
                             <tr>
                                 <th class="sorting" tabindex="0" aria-controls="all-applications-table" rowspan="1" colspan="1" style="width: 80px;" aria-label="ID: activate to sort column ascending">ID</th>
@@ -74,7 +74,8 @@
                                 <th class="sorting" tabindex="0" aria-controls="all-applications-table" rowspan="1" colspan="1" style="width: 144px;" aria-label="Phone: activate to sort column ascending">DVR. Name</th>
                                 <th class="sorting" tabindex="0" aria-controls="all-applications-table" rowspan="1" colspan="1" style="width: 135px;" aria-label="Email: activate to sort column ascending">CMM. Name</th>
                                 <th class="sorting" tabindex="0" aria-controls="all-applications-table" rowspan="1" colspan="1" style="width: 135px;" aria-label="Email: activate to sort column ascending">DES. Name</th>
-                                <th class="sorting" tabindex="0" aria-controls="all-applications-table" rowspan="1" colspan="1" style="width: 135px;" aria-label="Email: activate to sort column ascending">Weight (KG)</th>
+                                <th class="sorting" tabindex="0" aria-controls="all-applications-table" rowspan="1" colspan="1" style="width: 135px;" aria-label="Email: activate to sort column ascending">Weight 1 (KG)</th>
+                                <th class="sorting" tabindex="0" aria-controls="all-applications-table" rowspan="1" colspan="1" style="width: 135px;" aria-label="Email: activate to sort column ascending">Weight 2 (KG)</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -82,12 +83,7 @@
                             @forelse ($readings as $data)
                             <tr class="odd">
                                 <td>
-                                    {{-- <a href="#" data-toggle="modal" data-target="#add-application-modal">{{$data->projectId}}</a> --}}
-                                    @if ($data->second)
-                                    {{$data->readingId}}
-                                    @else
-                                    <a href="{{route('portal.second.readings', [$data->readingId])}}" class="identifyingClass" >{{$data->readingId}}</a>
-                                    @endif
+                                    <a href="{{route('portal.reports.print.ink', [$data->readingId])}}" class="identifyingClass" >{{$data->readingId}}</a>
                                 </td>
                                 <td>{{\Carbon\Carbon::parse($data->created_at)->toFormattedDateString()}}</td>
                                 <td>{{$data->accountName}}</td>
@@ -96,22 +92,18 @@
                                 <td>{{$data->commodityName}}</td>
                                 <td>{{$data->destinationName}}</td>
                                 <td><strong>{{number_format($data->weight, 2)}}</strong></td>
+                                @if ($data->second)
+                                <td><strong>{{number_format($data->second ? $data->second->weight : 0, 2)}}</strong></td>
+                                @else
+                                <td><a href="{{route('portal.second.readings', [$data->readingId])}}">add reading</a></td> 
+                                @endif
+                                @if (auth()->user()->roleID == 1)
                                 <td>
                                     <a href="#" style="color: red;">del</a>
                                 </td>
+                                @endif
                             </tr>
-                            @if ($data->second)
-                            <tr class="odd">
-                                <td>{{$data->second->readingId}}</td>
-                                <td>{{\Carbon\Carbon::parse($data->second->created_at)->toFormattedDateString()}}</td>
-                                <td>{{$data->second->accountName}}</td>
-                                <td>{{$data->second->sourceName}}</td>
-                                <td>{{$data->second->driverName}}</td>
-                                <td>{{$data->second->commodityName}}</td>
-                                <td>{{$data->second->destinationName}}</td>
-                                <td><strong>{{number_format($data->second->weight, 2)}}</strong></td>
-                            </tr>
-                            @endif
+                            
                             @empty
                             <tr class="odd">
                                 <td valign="top" colspan="6" class="dataTables_empty">No data available in table</td>

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('scripts')
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 @endsection
 
@@ -45,28 +44,36 @@
     <div class="container">
         <div class="az-content-body">
             <div class="row pdetails" style="margin-top: 20px;margin-bottom:40px;text-align: center;">
-                <h2>System Configurations:</h2>
+                <h2>Export Report:</h2>
             </div>
             <div class="row">
-                <form id="kepapp" action="{{route('portal.configurations')}}" method="post">
+                <form id="kepapp" action="{{route('portal.reports.readings.report')}}" method="get">
                     @csrf
                     <div class="row">
                         <div class="col-md">
-                            <label for="otherNames" class="form-label">PORT:</label>
-                            <input type="text" class="form-control" value="{{$config->port ?? ''}}" name="port" required />
+                            <label for="" class="form-label">Transaction ID:</label>
+                            <input type="text" class="form-control" />
                         </div>
                         <div class="col-md">
-                            <label for="lastName" class="form-label">SCRIPT:</label>
-                            <input type="text" class="form-control" id="" value="{{$config->script ?? ''}}" name="script" required />
+                            <label for="otherNames" class="form-label">From Date:</label>
+                            <input type="date" class="form-control" name="from_date" />
                         </div>
-                    </div>
-                    <br>
-                    
-                    @if (auth()->user()->roleID == 1)
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </div>
-                    @endif
+                        <div class="col-md">
+                            <label for="" class="form-label">To Date:</label>
+                            <input type="date" class="form-control" id="" name="to_date" />
+                        </div>
+                        <div class="col-md">
+                            <label for="" class="form-label">Export Type</label>
+                            <select name="type" required class="form-control">
+                                {{-- <option value="">-choose-</option> --}}
+                                <option value="excel">Excel</option>
+                                {{-- <option value="pdf">PDF</option> --}}
+                            </select>
+                        </div>
+                        <div class="col-md">
+                            <button style="margin-top: 25px; width: 100%;" type="submit" class="btn btn-danger">Run Export</button>
+                        </div>
+                    </div> <br>
                 
                 </form>
             </div>

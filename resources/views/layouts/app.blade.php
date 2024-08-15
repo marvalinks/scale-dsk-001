@@ -58,7 +58,7 @@
                     </li>
 
                     <li class="nav-item ">
-                      <a href="#" class="nav-link">
+                      <a href="{{route('portal.reports.index')}}" class="nav-link">
                           <i class="typcn typcn-cog"></i> Reports/Exports
                       </a>
                     </li>
