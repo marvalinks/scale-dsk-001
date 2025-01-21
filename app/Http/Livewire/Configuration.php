@@ -12,7 +12,7 @@ class Configuration extends Component
     public function mount($config)
     {
         $this->config = $config;
-        $this->connection = $config->connection;
+        $this->connection = $config->connection ?? null;
     }
     public function render()
     {

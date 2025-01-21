@@ -15,9 +15,9 @@ class NativeAppServiceProvider implements ProvidesPhpIni
     {
         Window::open()
             ->route('login')
-            ->title('Scale App')
+            ->title('Aviance Scale Bridge')
             ->showDevTools(false)
-            ->width(1200)
+            ->width(1400)
             ->height(800);
     }
 
