@@ -41,6 +41,7 @@ class UserModuleController extends Controller
         ]);
         
         $data['password'] = Hash::make($data['password']);
+        $data['roleID'] = 1;
         User::create($data);
         return redirect()->route('login');
     }

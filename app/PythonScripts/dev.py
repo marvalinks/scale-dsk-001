@@ -2,18 +2,8 @@
 def readings(comport):
     list1 = [4.6, 10, 7.2, 18.8, 15, 2.6, 14.7, 8.0, 12.5]
     return random.choice(list1)
-    
-    # try:
-    #     serialBout = serial.Serial()
-    #     serialBout.port = comport
-    #     serialBout.baudrate = 9600
-    #     serialBout.open()
 
-    #     packet = serialBout.readline()
-    #     wtt = packet.decode("utf").rstrip("\n")
-    #     return wtt
-    # except:
-    #     return 0
+
 
 if __name__ == "__main__":
     import sys

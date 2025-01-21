@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Http\Controllers\PythonModuleController;
+use App\Models\Configuration;
 use App\Services\PythonService;
 use Livewire\Component;
 

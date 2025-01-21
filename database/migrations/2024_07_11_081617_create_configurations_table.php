@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('port')->default('COM3');
             $table->string('script')->default('python');
+            $table->string('connection')->default('comport');
+            $table->string('ip')->nullable();
+            $table->string('ip_port')->nullable();
             $table->timestamps();
         });
     }

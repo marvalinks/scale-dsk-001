@@ -75,7 +75,7 @@ class AdminModuleController extends Controller
     public function postConfigurations(Request $request)
     {
         $data = $request->validate([
-            'port' => 'required', 'script' => 'required'
+            'port' => '', 'script' => '', 'connection' => '', 'ip' => '', 'ip_port' => ''
         ]);
         $config = Configuration::first();
         if($config) {

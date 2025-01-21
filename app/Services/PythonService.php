@@ -15,15 +15,27 @@ class PythonService
         if(!$config){
             return response()->json(['result' => 0]);
         }
-
-        $comport = $config->port;
+        
         $script = $config->script;
-
-
-        // $comport = 'COM3';
+        
         $endpoint = app_path('PythonScripts');
         
-        $path = $endpoint."/readings.py";
+        if($config->connection == 'comport') {
+            $comport = $config->port;
+            $path = $endpoint."/readings.py";
+            $command = "$script $path $comport";
+            $output = shell_exec($command);
+            return trim($output);
+        }
+        if($config->connection == 'network') {
+            $host = $config->ip;
+            $port = $config->ip_port;
+            $path = $endpoint."/network.py";
+            $command = "$script $path $host $port";
+            $output = shell_exec($command);
+            return trim($output);
+        }
+        
         // $process = new Process([$script, $path, $comport]);
         // // $process = new Process(['python', $path, $comport]);
         // $process->run();
@@ -33,14 +45,6 @@ class PythonService
         // }
 
         // return trim($process->getOutput());
-
-        
-        
-
-        $command = "$script $path $comport";
-        $output = shell_exec($command);
-        return trim($output);
-
         
         
 

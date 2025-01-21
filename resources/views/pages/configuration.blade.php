@@ -50,16 +50,7 @@
             <div class="row">
                 <form id="kepapp" action="{{route('portal.configurations')}}" method="post">
                     @csrf
-                    <div class="row">
-                        <div class="col-md">
-                            <label for="otherNames" class="form-label">PORT:</label>
-                            <input type="text" class="form-control" value="{{$config->port ?? ''}}" name="port" required />
-                        </div>
-                        <div class="col-md">
-                            <label for="lastName" class="form-label">SCRIPT:</label>
-                            <input type="text" class="form-control" id="" value="{{$config->script ?? ''}}" name="script" required />
-                        </div>
-                    </div>
+                    @livewire('configuration', ['config' => $config])
                     <br>
                     
                     @if (auth()->user()->roleID == 1)
