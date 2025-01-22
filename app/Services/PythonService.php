@@ -33,7 +33,8 @@ class PythonService
             $path = $endpoint."/network.py";
             $command = "$script $path $host $port";
             $output = shell_exec($command);
-            return trim($output);
+            $re = explode(' ', trim($output));
+            return floatval(end($re));
         }
         
         // $process = new Process([$script, $path, $comport]);

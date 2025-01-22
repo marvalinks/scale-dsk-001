@@ -40,15 +40,12 @@ class GScale extends Component
         // $result = shell_exec("python " . $path . "/weight.py" . " 2>&1");
         
         $result = $this->pythonService->readings();
-        $re = explode(' ', $result);
-        $va = floatval(end($re));
-        // dd(floatval($va));
         if (trim($result) == trim("error")) {
             $this->weight = 0;
             $this->color = "danger";
             session(['weight' => 0]);
         } else {
-            $this->weight = $va;
+            $this->weight = $result;
             $this->color = "success";
             session(['weight' => $result]);
         }
