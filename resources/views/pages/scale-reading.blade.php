@@ -4,7 +4,7 @@
 <script>
     setInterval(function() {
         Livewire.emit('weightTab')
-    }, 1000);
+    }, 3000);
 </script>
 @endsection
 @section('links')
